@@ -71,17 +71,18 @@ tasks.register('fatJar', Jar) {
 //   Requires: jpackage on PATH (bundled with JDK 14+), Xcode CLI tools on macOS
 tasks.register('jpackage', Exec) {
     dependsOn fatJar
-    def jarPath = fatJar.archiveFile.get().asFile.absolutePath
-    def jvmArgs = application.applicationDefaultJvmArgs.join(' ')
-    commandLine 'jpackage',
+    def cmd = [
+        'jpackage',
         '--type', 'dmg',
         '--name', 'NovaTerm',
         '--app-version', version,
         '--input', layout.buildDirectory.dir('libs').get().asFile.absolutePath,
         '--main-jar', fatJar.archiveFileName.get(),
         '--main-class', application.mainClass.get(),
-        '--java-options', jvmArgs,
         '--dest', layout.buildDirectory.dir('dist').get().asFile.absolutePath,
         '--mac-package-name', 'NovaTerm',
         '--mac-package-identifier', 'com.novaterm.app'
+    ]
+    application.applicationDefaultJvmArgs.each { cmd += ['--java-options', it] }
+    commandLine cmd
 }
