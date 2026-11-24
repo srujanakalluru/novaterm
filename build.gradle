@@ -1,0 +1,87 @@
+plugins {
+    id 'java'
+    id 'application'
+    id 'org.openjfx.javafxplugin' version '0.1.0'
+}
+
+group = 'com.novaterm'
+version = '1.0.0'
+sourceCompatibility = '21'
+
+repositories {
+    mavenCentral()
+}
+
+javafx {
+    version = '21.0.5'
+    modules = ['javafx.controls', 'javafx.fxml', 'javafx.graphics', 'javafx.web', 'javafx.swing']
+}
+
+dependencies {
+    // SSH
+    implementation 'org.apache.sshd:sshd-core:2.13.2'
+    implementation 'org.apache.sshd:sshd-sftp:2.13.2'
+    implementation 'org.apache.sshd:sshd-scp:2.13.2'
+    implementation 'net.i2p.crypto:eddsa:0.3.0'
+
+    // Logging
+    implementation 'org.slf4j:slf4j-api:2.0.9'
+    implementation 'ch.qos.logback:logback-classic:1.4.14'
+
+    // JSON (session persistence)
+    implementation 'com.fasterxml.jackson.core:jackson-databind:2.16.1'
+
+    // Bouncycastle for key support
+    implementation 'org.bouncycastle:bcpkix-jdk18on:1.78'
+    implementation 'org.bouncycastle:bcprov-jdk18on:1.78'
+}
+
+application {
+    mainClass = 'com.novaterm.Main'
+    applicationDefaultJvmArgs = [
+        '--add-opens=java.base/java.lang=ALL-UNNAMED',
+        '--add-opens=java.desktop/java.awt.font=ALL-UNNAMED',
+        '--add-exports=javafx.graphics/com.sun.javafx.sg.prism=ALL-UNNAMED',
+        '--add-exports=javafx.web/com.sun.javafx.webkit=ALL-UNNAMED'
+    ]
+}
+
+jar {
+    manifest {
+        attributes 'Main-Class': 'com.novaterm.Main'
+    }
+}
+
+tasks.register('fatJar', Jar) {
+    archiveClassifier = 'all'
+    duplicatesStrategy = DuplicatesStrategy.EXCLUDE
+    manifest {
+        attributes 'Main-Class': 'com.novaterm.Main'
+    }
+    from {
+        configurations.runtimeClasspath.collect {
+            it.isDirectory() ? it : zipTree(it)
+        }
+    }
+    with jar
+}
+
+// macOS .app / .dmg via jpackage (JDK 14+)
+// Usage: ./gradlew jpackage
+//   Requires: jpackage on PATH (bundled with JDK 14+), Xcode CLI tools on macOS
+tasks.register('jpackage', Exec) {
+    dependsOn fatJar
+    def jarPath = fatJar.archiveFile.get().asFile.absolutePath
+    def jvmArgs = application.applicationDefaultJvmArgs.join(' ')
+    commandLine 'jpackage',
+        '--type', 'dmg',
+        '--name', 'NovaTerm',
+        '--app-version', version,
+        '--input', layout.buildDirectory.dir('libs').get().asFile.absolutePath,
+        '--main-jar', fatJar.archiveFileName.get(),
+        '--main-class', application.mainClass.get(),
+        '--java-options', jvmArgs,
+        '--dest', layout.buildDirectory.dir('dist').get().asFile.absolutePath,
+        '--mac-package-name', 'NovaTerm',
+        '--mac-package-identifier', 'com.novaterm.app'
+}
