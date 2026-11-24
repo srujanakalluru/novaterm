@@ -21,11 +21,11 @@ public class LatencySparklinePopup extends Popup {
 
     private static final int W = 220;
     private static final int H = 60;
-    private static final Color BG  = Color.web("#1e1e2e");
-    private static final Color LINE = Color.web("#89b4fa");
-    private static final Color FILL = Color.web("#89b4fa44");
-    private static final Color TEXT = Color.web("#cdd6f4");
-    private static final Color DIM  = Color.web("#6c7086");
+    private static final Color BG  = Color.web("#f6f8fa");
+    private static final Color LINE = Color.web("#0969da");
+    private static final Color FILL = Color.web("#0969da33");
+    private static final Color TEXT = Color.web("#1f2328");
+    private static final Color DIM  = Color.web("#848d97");
 
     private final Canvas canvas = new Canvas(W, H);
     private final Label statsLabel = new Label();
@@ -34,12 +34,13 @@ public class LatencySparklinePopup extends Popup {
         setAutoHide(true);
         setHideOnEscape(true);
 
-        statsLabel.setStyle("-fx-text-fill:#a6adc8; -fx-font-size:10px; -fx-font-family:'SF Mono',Menlo,monospace;");
+        statsLabel.setStyle("-fx-text-fill:#656d76; -fx-font-size:10px; -fx-font-family:'SF Mono',Menlo,monospace;");
 
         VBox box = new VBox(4, canvas, statsLabel);
         box.setPadding(new Insets(8));
-        box.setStyle("-fx-background-color:#1e1e2e; -fx-background-radius:6; " +
-                     "-fx-effect:dropshadow(gaussian,#00000066,10,0,0,2);");
+        box.setStyle("-fx-background-color:#f6f8fa; -fx-background-radius:6; " +
+                     "-fx-border-color:#d0d7de; -fx-border-radius:6; -fx-border-width:1; " +
+                     "-fx-effect:dropshadow(gaussian,#00000033,10,0,0,2);");
         box.setPrefWidth(W + 16);
         getContent().add(box);
     }

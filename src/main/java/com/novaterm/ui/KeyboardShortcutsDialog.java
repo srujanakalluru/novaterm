@@ -68,16 +68,16 @@ public class KeyboardShortcutsDialog extends Dialog<Void> {
         for (int i = 0; i < entries.length; i++) {
             Label keys = new Label(entries[i].keys());
             keys.setStyle("-fx-font-family:'SF Mono',Menlo,monospace; -fx-font-size:12px; " +
-                    "-fx-text-fill:#89b4fa; -fx-background-color:#313244; " +
+                    "-fx-text-fill:#0969da; -fx-background-color:#d0d7de; " +
                     "-fx-background-radius:3; -fx-padding:2 6 2 6;");
             Label desc = new Label(entries[i].description());
-            desc.setStyle("-fx-text-fill:#cdd6f4; -fx-font-size:12px;");
+            desc.setStyle("-fx-text-fill:#1f2328; -fx-font-size:12px;");
             grid.addRow(i, keys, desc);
         }
 
         TitledPane pane = new TitledPane(title, grid);
         pane.setCollapsible(false);
-        pane.setStyle("-fx-text-fill:#a6adc8; -fx-font-size:11px;");
+        pane.setStyle("-fx-text-fill:#656d76; -fx-font-size:11px;");
         return pane;
     }
 }

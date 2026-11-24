@@ -63,7 +63,7 @@ public class TerminalTab {
         if (engine == null) return;
         int fs = PreferencesDialog.get().getInt(PreferencesDialog.PREF_FONT_SIZE, 13);
         String ff = PreferencesDialog.get().get(PreferencesDialog.PREF_FONT_FAMILY, "SF Mono");
-        String scheme = PreferencesDialog.get().get(PreferencesDialog.PREF_COLOR_SCHEME, "Catppuccin Mocha");
+        String scheme = PreferencesDialog.get().get(PreferencesDialog.PREF_COLOR_SCHEME, "Github Light");
         String cursorStyle = PreferencesDialog.get().get(PreferencesDialog.PREF_CURSOR_STYLE, "block");
         int transparency = PreferencesDialog.get().getInt(PreferencesDialog.PREF_TRANSPARENCY, 0);
         boolean ligatures = PreferencesDialog.get().getBoolean(PreferencesDialog.PREF_LIGATURES, false);
@@ -74,11 +74,11 @@ public class TerminalTab {
             : "var c=document.getElementById('term-canvas');if(c){c.style.fontVariantLigatures='none';}";
         String js = String.format(
             "if(window.term){window.term.fontSize=%d;window.term.fontFamily=\"'%s',Menlo,'Courier New',monospace\";" +
-            "window.term.defaultFg='%s';window.term.defaultBg='%s';" +
+            "window.term.setColors('%s','%s');" +
             "window.__TERM_CURSOR_STYLE__='%s';" +
             "window.term._measureCell();window.term.render();" +
             "document.body.style.opacity='%s';}" + ligJs,
-            fs, ff.replace("'", "\\'"), colors[1], colors[0], cursorStyle,
+            fs, ff.replace("'", "\\'"), colors[0], colors[1], cursorStyle,
             String.format("%.2f", opacity));
         Platform.runLater(() -> engine.executeScript(js));
     }
@@ -302,7 +302,7 @@ public class TerminalTab {
         colorItem.setOnAction(e -> {
             javafx.scene.control.ColorPicker picker = new javafx.scene.control.ColorPicker(
                     colorDot.isVisible() ? (javafx.scene.paint.Color) colorDot.getFill()
-                                        : javafx.scene.paint.Color.web("#89b4fa"));
+                                        : javafx.scene.paint.Color.web("#0969da"));
             javafx.scene.control.ButtonType applyBtn = new javafx.scene.control.ButtonType("Apply",
                     javafx.scene.control.ButtonBar.ButtonData.OK_DONE);
             javafx.scene.control.ButtonType clearBtn = new javafx.scene.control.ButtonType("Clear");
@@ -354,7 +354,7 @@ public class TerminalTab {
 
         javafx.scene.control.Label matchCount = new javafx.scene.control.Label();
         matchCount.setId("search-match-count");
-        matchCount.setStyle("-fx-text-fill:#a6adc8; -fx-font-size:11px; -fx-min-width:60;");
+        matchCount.setStyle("-fx-text-fill:#656d76; -fx-font-size:11px; -fx-min-width:60;");
 
         javafx.scene.control.Button prevMatch = new javafx.scene.control.Button("↑");
         prevMatch.setId("search-prev-btn");
@@ -389,7 +389,7 @@ public class TerminalTab {
         searchBar.setId("search-bar");
         searchBar.visibleProperty().bind(searchField.visibleProperty());
         searchBar.managedProperty().bind(searchField.managedProperty());
-        searchBar.setStyle("-fx-background-color:#313244; -fx-padding:4 8 4 8; -fx-alignment:center-right;");
+        searchBar.setStyle("-fx-background-color:#d0d7de; -fx-padding:4 8 4 8; -fx-alignment:center-right;");
 
         javafx.scene.layout.BorderPane container = new javafx.scene.layout.BorderPane();
         container.setCenter(webView);
@@ -719,13 +719,13 @@ public class TerminalTab {
         int autoDelaySecs = 5;
         javafx.scene.control.Label countLabel = new javafx.scene.control.Label(
                 "Reconnecting in " + autoDelaySecs + "s…");
-        countLabel.setStyle("-fx-text-fill:#cdd6f4; -fx-font-size:12px;");
+        countLabel.setStyle("-fx-text-fill:#1f2328; -fx-font-size:12px;");
 
         javafx.scene.control.Button reconnectNow = new javafx.scene.control.Button("⟳  Now");
-        reconnectNow.setStyle("-fx-background-color:#89b4fa; -fx-text-fill:#1e1e2e; -fx-padding:5 14 5 14; -fx-cursor:hand;");
+        reconnectNow.setStyle("-fx-background-color:#0969da; -fx-text-fill:#f6f8fa; -fx-padding:5 14 5 14; -fx-cursor:hand;");
 
         javafx.scene.control.Button cancel = new javafx.scene.control.Button("✕");
-        cancel.setStyle("-fx-background-color:#45475a; -fx-text-fill:#cdd6f4; -fx-padding:5 10 5 10; -fx-cursor:hand;");
+        cancel.setStyle("-fx-background-color:#c8d1db; -fx-text-fill:#1f2328; -fx-padding:5 10 5 10; -fx-cursor:hand;");
 
         javafx.animation.Timeline[] timerRef = {null};
 
@@ -760,7 +760,7 @@ public class TerminalTab {
         javafx.scene.layout.HBox overlay = new javafx.scene.layout.HBox(10,
                 countLabel, reconnectNow, cancel);
         overlay.setAlignment(javafx.geometry.Pos.CENTER_LEFT);
-        overlay.setStyle("-fx-background-color:#181825; -fx-padding:6 12 6 12; -fx-border-color:#45475a; -fx-border-width:0 0 1 0;");
+        overlay.setStyle("-fx-background-color:#eaeef2; -fx-padding:6 12 6 12; -fx-border-color:#c8d1db; -fx-border-width:0 0 1 0;");
         bp.setTop(overlay);
     }
 
@@ -929,11 +929,11 @@ public class TerminalTab {
             pw.setPrefWidth(300);
 
             Label hint = new Label(promptText + ":");
-            hint.setStyle("-fx-text-fill: #cdd6f4; -fx-font-size: 12px;");
+            hint.setStyle("-fx-text-fill: #1f2328; -fx-font-size: 12px;");
 
             javafx.scene.control.CheckBox saveToKeychain = new javafx.scene.control.CheckBox("Save to Keychain");
             saveToKeychain.setSelected(false);
-            saveToKeychain.setStyle("-fx-text-fill:#a6adc8; -fx-font-size:11px;");
+            saveToKeychain.setStyle("-fx-text-fill:#656d76; -fx-font-size:11px;");
 
             javafx.scene.layout.VBox box = new javafx.scene.layout.VBox(8, hint, pw, saveToKeychain);
             box.setPadding(new javafx.geometry.Insets(12, 0, 4, 0));
@@ -980,7 +980,7 @@ public class TerminalTab {
         String vt100js = loadResource("/com/novaterm/web/vt100.js");
         int fontSize = PreferencesDialog.get().getInt(PreferencesDialog.PREF_FONT_SIZE, 13);
         String fontFamily = PreferencesDialog.get().get(PreferencesDialog.PREF_FONT_FAMILY, "SF Mono");
-        String colorScheme = PreferencesDialog.get().get(PreferencesDialog.PREF_COLOR_SCHEME, "Catppuccin Mocha");
+        String colorScheme = PreferencesDialog.get().get(PreferencesDialog.PREF_COLOR_SCHEME, "Github Light");
         String[] colors = ColorScheme.resolve(colorScheme); // [bg, fg, cursorFg]
 
         int scrollbackLines = PreferencesDialog.get().getInt(PreferencesDialog.PREF_SCROLLBACK, 10000);
@@ -1004,18 +1004,18 @@ public class TerminalTab {
             """, fontSize, fontFamily.replace("'", "\\'"), colors[0], colors[1], scrollbackLines, cursorStyle,
             String.format("%.2f", opacity), scrollSpeed, ligatures ? "true" : "false");
 
-        return """
+        return ("""
             <!DOCTYPE html>
             <html>
             <head>
             <meta charset="UTF-8">
             <style>
               * { margin:0; padding:0; box-sizing:border-box; }
-              html, body { width:100%; height:100%; background:#1e1e2e; overflow:hidden; }
+              html, body { width:100%; height:100%; background:%s; overflow:hidden; }
               canvas { display:block; }
             </style>
             <script>
-            """ + prefsOverride + vt100js + """
+            """).formatted(colors[0]) + prefsOverride + vt100js + """
             </script>
             </head>
             <body>
@@ -1256,15 +1256,15 @@ public class TerminalTab {
         if (replayBanner == null) {
             replayBanner = new javafx.scene.control.Label();
             replayBanner.setId("replay-banner");
-            replayBanner.setStyle("-fx-background-color:#313244; -fx-text-fill:#cdd6f4; " +
+            replayBanner.setStyle("-fx-background-color:#d0d7de; -fx-text-fill:#1f2328; " +
                     "-fx-font-size:11px; -fx-padding:4 10 4 10; -fx-background-radius:0;");
             replayBanner.setMaxWidth(Double.MAX_VALUE);
             javafx.scene.control.Button cancelBtn = new javafx.scene.control.Button("✕ Cancel");
-            cancelBtn.setStyle("-fx-background-color:transparent; -fx-text-fill:#f38ba8; -fx-cursor:hand; -fx-font-size:10px;");
+            cancelBtn.setStyle("-fx-background-color:transparent; -fx-text-fill:#cf222e; -fx-cursor:hand; -fx-font-size:10px;");
             cancelBtn.setOnAction(e -> replayCancelled = true);
             javafx.scene.layout.HBox wrapper = new javafx.scene.layout.HBox(8, replayBanner, cancelBtn);
             wrapper.setId("replay-banner-row");
-            wrapper.setStyle("-fx-background-color:#313244; -fx-padding:0;");
+            wrapper.setStyle("-fx-background-color:#d0d7de; -fx-padding:0;");
             wrapper.setAlignment(javafx.geometry.Pos.CENTER_LEFT);
             javafx.scene.layout.HBox.setHgrow(replayBanner, javafx.scene.layout.Priority.ALWAYS);
             if (container != null) container.setTop(wrapper);

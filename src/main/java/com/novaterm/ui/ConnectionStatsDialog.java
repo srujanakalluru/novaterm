@@ -51,7 +51,7 @@ public class ConnectionStatsDialog extends Dialog<Void> {
         table.setStyle("-fx-font-family:'SF Mono',Menlo,monospace; -fx-font-size:11px;");
 
         Label hint = new Label("Updates every second while this dialog is open.");
-        hint.setStyle("-fx-text-fill:#6c7086; -fx-font-size:10px;");
+        hint.setStyle("-fx-text-fill:#848d97; -fx-font-size:10px;");
 
         VBox content = new VBox(6, table, hint);
         content.setPadding(new Insets(8));

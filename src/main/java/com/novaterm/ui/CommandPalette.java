@@ -53,11 +53,11 @@ public class CommandPalette {
                 super.updateItem(item, empty);
                 if (empty || item == null) { setGraphic(null); setText(null); return; }
                 Label main = new Label(item.label());
-                main.setStyle("-fx-text-fill:#cdd6f4; -fx-font-size:13px;");
+                main.setStyle("-fx-text-fill:#1f2328; -fx-font-size:13px;");
                 Label sub = new Label(item.sub());
-                sub.setStyle("-fx-text-fill:#6c7086; -fx-font-size:11px;");
+                sub.setStyle("-fx-text-fill:#848d97; -fx-font-size:11px;");
                 Label cat = new Label(item.category());
-                cat.setStyle("-fx-text-fill:#89b4fa; -fx-font-size:10px; -fx-background-color:#1e3a5f; " +
+                cat.setStyle("-fx-text-fill:#0969da; -fx-font-size:10px; -fx-background-color:#ddf4ff; " +
                         "-fx-background-radius:3; -fx-padding:1 5 1 5;");
                 Region spacer = new Region();
                 HBox.setHgrow(spacer, Priority.ALWAYS);
@@ -103,7 +103,7 @@ public class CommandPalette {
         listView.setOnKeyPressed(e -> { if (e.getCode() == KeyCode.ENTER) runSelected(); });
 
         VBox root = new VBox(searchField, listView);
-        root.setStyle("-fx-background-color:#1e1e2e; -fx-border-color:#45475a; -fx-border-width:1; " +
+        root.setStyle("-fx-background-color:#f6f8fa; -fx-border-color:#c8d1db; -fx-border-width:1; " +
                 "-fx-effect: dropshadow(gaussian, rgba(0,0,0,0.5), 20, 0, 0, 4);");
         root.setPadding(new Insets(0));
 

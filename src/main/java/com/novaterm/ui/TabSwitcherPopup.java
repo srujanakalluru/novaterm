@@ -72,11 +72,11 @@ public class TabSwitcherPopup {
         listView.setOnMouseClicked(e -> { if (e.getClickCount() == 2) selectCurrent(); });
 
         Label header = new Label("Switch Tab");
-        header.setStyle("-fx-text-fill:#6c7086; -fx-font-size:11px; -fx-padding:6 14 4 14;");
+        header.setStyle("-fx-text-fill:#848d97; -fx-font-size:11px; -fx-padding:6 14 4 14;");
 
         VBox root = new VBox(header, searchField, listView);
         VBox.setVgrow(listView, Priority.ALWAYS);
-        root.setStyle("-fx-background-color:#1e1e2e; -fx-border-color:#45475a; -fx-border-width:1; " +
+        root.setStyle("-fx-background-color:#f6f8fa; -fx-border-color:#c8d1db; -fx-border-width:1; " +
                       "-fx-border-radius:8; -fx-background-radius:8;");
 
         Scene scene = new Scene(root);
@@ -117,11 +117,11 @@ public class TabSwitcherPopup {
             super.updateItem(item, empty);
             if (empty || item == null) { setGraphic(null); setText(null); return; }
             Label titleLbl = new Label(item.title());
-            titleLbl.setStyle("-fx-text-fill:#cdd6f4; -fx-font-size:12px;");
+            titleLbl.setStyle("-fx-text-fill:#1f2328; -fx-font-size:12px;");
             Label subtitleLbl = new Label(item.subtitle());
-            subtitleLbl.setStyle("-fx-text-fill:#6c7086; -fx-font-size:10px;");
+            subtitleLbl.setStyle("-fx-text-fill:#848d97; -fx-font-size:10px;");
             Label idxLbl = new Label(String.valueOf(item.index() + 1));
-            idxLbl.setStyle("-fx-text-fill:#45475a; -fx-font-size:10px; -fx-min-width:16; -fx-alignment:center-right;");
+            idxLbl.setStyle("-fx-text-fill:#c8d1db; -fx-font-size:10px; -fx-min-width:16; -fx-alignment:center-right;");
             Region spacer = new Region();
             HBox.setHgrow(spacer, Priority.ALWAYS);
             HBox row = new HBox(8, new VBox(2, titleLbl, subtitleLbl), spacer, idxLbl);

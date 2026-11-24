@@ -149,7 +149,7 @@ public class SFTPPanel {
         progressLabel = new javafx.scene.control.Label("Transferring…");
         progressLabel.setStyle("-fx-text-fill:#89b4fa; -fx-font-size:11px;");
         progressRow = new javafx.scene.layout.HBox(8, progressLabel, progressBar);
-        progressRow.setStyle("-fx-background-color:#181825; -fx-padding:4 8 4 8;");
+        progressRow.setStyle("-fx-background-color:#eaeef2; -fx-padding:4 8 4 8;");
         progressRow.setVisible(false);
         progressRow.setManaged(false);
         HBox.setHgrow(progressBar, Priority.ALWAYS);
@@ -158,7 +158,7 @@ public class SFTPPanel {
         bookmarkList.setId("sftp-bookmarks");
         bookmarkList.setPrefWidth(160);
         bookmarkList.setPlaceholder(new Label("No bookmarks"));
-        bookmarkList.setStyle("-fx-background-color:#181825; -fx-font-size:11px;");
+        bookmarkList.setStyle("-fx-background-color:#eaeef2; -fx-font-size:11px;");
         refreshBookmarks();
         bookmarkList.setOnMouseClicked(e -> {
             if (e.getClickCount() == 2) {
@@ -169,7 +169,7 @@ public class SFTPPanel {
         bookmarkList.setContextMenu(buildBookmarkContextMenu());
 
         Label bmTitle = new Label("BOOKMARKS");
-        bmTitle.setStyle("-fx-text-fill:#6c7086; -fx-font-size:10px; -fx-padding:4 6 2 6;");
+        bmTitle.setStyle("-fx-text-fill:#848d97; -fx-font-size:10px; -fx-padding:4 6 2 6;");
         VBox bmPane = new VBox(bmTitle, bookmarkList);
         VBox.setVgrow(bookmarkList, Priority.ALWAYS);
 

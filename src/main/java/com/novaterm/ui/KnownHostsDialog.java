@@ -58,7 +58,7 @@ public class KnownHostsDialog extends Dialog<Void> {
         });
 
         Label hint = new Label("Double-click a host to copy its fingerprint.");
-        hint.setStyle("-fx-text-fill:#6c7086; -fx-font-size:10px;");
+        hint.setStyle("-fx-text-fill:#848d97; -fx-font-size:10px;");
 
         table.setRowFactory(tv -> {
             TableRow<Map.Entry<String, String>> row = new TableRow<>();

@@ -84,8 +84,8 @@ public class SessionManagerPanel {
         notesPreview.setMaxHeight(72);
         notesPreview.setVisible(false);
         notesPreview.setManaged(false);
-        notesPreview.setStyle("-fx-background-color:#181825; -fx-text-fill:#a6adc8; -fx-font-size:11px; " +
-                              "-fx-border-color:#313244; -fx-border-width:1 0 0 0;");
+        notesPreview.setStyle("-fx-background-color:#eaeef2; -fx-text-fill:#656d76; -fx-font-size:11px; " +
+                              "-fx-border-color:#d0d7de; -fx-border-width:1 0 0 0;");
         treeView.getSelectionModel().selectedItemProperty().addListener((obs, old, sel) -> {
             if (sel != null && sel.getValue() instanceof Session s
                     && s.getNotes() != null && !s.getNotes().isBlank()) {
@@ -130,8 +130,8 @@ public class SessionManagerPanel {
         for (String tag : allTags) {
             Label chip = new Label(tag);
             boolean active = tag.equals(activeTagFilter);
-            chip.setStyle("-fx-background-color:" + (active ? "#89b4fa" : "#313244") + ";" +
-                          "-fx-text-fill:" + (active ? "#1e1e2e" : "#cdd6f4") + ";" +
+            chip.setStyle("-fx-background-color:" + (active ? "#0969da" : "#d0d7de") + ";" +
+                          "-fx-text-fill:" + (active ? "#f6f8fa" : "#1f2328") + ";" +
                           "-fx-padding:2 6 2 6; -fx-background-radius:9; -fx-font-size:10px; -fx-cursor:hand;");
             chip.setOnMouseClicked(e -> {
                 activeTagFilter = active ? "" : tag;
@@ -292,7 +292,7 @@ public class SessionManagerPanel {
             Session session = (Session) item;
             Circle dot = new Circle(5);
             String color = session.getColor();
-            dot.setFill(color != null ? Color.web(color) : Color.web("#89b4fa"));
+            dot.setFill(color != null ? Color.web(color) : Color.web("#0969da"));
 
             Label name = new Label(session.toString());
             Label host = new Label(session.getHost() + ":" + session.getPort());
@@ -303,7 +303,7 @@ public class SessionManagerPanel {
             if (cachedMs == 0) PingService.get().measure(session); // fire async measurement
             Label pingLbl = new Label(PingService.badge(cachedMs));
             pingLbl.setStyle("-fx-font-size:9px; -fx-padding:1 4 1 4; -fx-background-radius:3; " +
-                             "-fx-background-color:#313244; -fx-text-fill:" +
+                             "-fx-background-color:#d0d7de; -fx-text-fill:" +
                              PingService.badgeColor(cachedMs) + ";");
             pingLbl.setVisible(cachedMs != 0);
 
@@ -316,7 +316,7 @@ public class SessionManagerPanel {
                         if (ms != 0) {
                             pingLbl.setText(PingService.badge(ms));
                             pingLbl.setStyle("-fx-font-size:9px; -fx-padding:1 4 1 4; -fx-background-radius:3; " +
-                                            "-fx-background-color:#313244; -fx-text-fill:" +
+                                            "-fx-background-color:#d0d7de; -fx-text-fill:" +
                                             PingService.badgeColor(ms) + ";");
                             pingLbl.setVisible(true);
                         }
@@ -339,7 +339,7 @@ public class SessionManagerPanel {
             if (session.getTags() != null) {
                 for (String tag : session.getTags()) {
                     Label tc = new Label(tag);
-                    tc.setStyle("-fx-background-color:#313244; -fx-text-fill:#89b4fa;" +
+                    tc.setStyle("-fx-background-color:#d0d7de; -fx-text-fill:#0969da;" +
                                 "-fx-padding:0 4 0 4; -fx-background-radius:5; -fx-font-size:9px;");
                     tagChips.getChildren().add(tc);
                 }
@@ -412,7 +412,7 @@ public class SessionManagerPanel {
             });
 
             MenuItem delete = new MenuItem("Delete");
-            delete.setStyle("-fx-text-fill: #f38ba8;");
+            delete.setStyle("-fx-text-fill: #cf222e;");
             delete.setOnAction(e -> onDelete.accept(session));
             ctx.getItems().addAll(open, edit, fav, editTags, moveMenu, new SeparatorMenuItem(), delete);
             setContextMenu(ctx);

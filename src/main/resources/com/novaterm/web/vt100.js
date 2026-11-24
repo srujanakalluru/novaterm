@@ -5,8 +5,8 @@
 (function(global) {
 'use strict';
 
-const DEFAULT_FG = (typeof window.__TERM_FG__ !== 'undefined') ? window.__TERM_FG__ : '#cdd6f4';
-const DEFAULT_BG = (typeof window.__TERM_BG__ !== 'undefined') ? window.__TERM_BG__ : '#1e1e2e';
+let DEFAULT_FG = (typeof window.__TERM_FG__ !== 'undefined') ? window.__TERM_FG__ : '#24292f';
+let DEFAULT_BG = (typeof window.__TERM_BG__ !== 'undefined') ? window.__TERM_BG__ : '#ffffff';
 const COLS = 220, ROWS = 50;
 
 // ANSI 256-color palette
@@ -813,6 +813,15 @@ class Terminal {
     ctx.fillRect(0, 0, w, h);
     ctx.restore();
     setTimeout(() => this.render(), 120);
+  }
+
+  setColors(bg, fg) {
+    DEFAULT_BG = bg;
+    DEFAULT_FG = fg;
+    this.fg = fg;
+    this.bg = bg;
+    document.body.style.background = bg;
+    this.render();
   }
 
   destroy() { clearInterval(this._blinkTimer); }

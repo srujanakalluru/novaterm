@@ -74,11 +74,11 @@ public class ClipboardHistoryPopup {
         });
 
         Label header = new Label("Clipboard History");
-        header.setStyle("-fx-text-fill:#6c7086; -fx-font-size:11px; -fx-padding:6 14 4 14;");
+        header.setStyle("-fx-text-fill:#848d97; -fx-font-size:11px; -fx-padding:6 14 4 14;");
 
         VBox root = new VBox(header, searchField, listView);
         VBox.setVgrow(listView, Priority.ALWAYS);
-        root.setStyle("-fx-background-color:#1e1e2e; -fx-border-color:#45475a; -fx-border-width:1; -fx-border-radius:8; -fx-background-radius:8;");
+        root.setStyle("-fx-background-color:#f6f8fa; -fx-border-color:#c8d1db; -fx-border-width:1; -fx-border-radius:8; -fx-background-radius:8;");
 
         Scene scene = new Scene(root);
         scene.getStylesheets().add(getClass().getResource("/com/novaterm/styles.css").toExternalForm());
@@ -139,13 +139,13 @@ public class ClipboardHistoryPopup {
                 setTooltip(item.length() > 200 ? new Tooltip(item.substring(0, 200) + "…") : null);
             } else {
                 Label titleLbl = new Label(title);
-                titleLbl.setStyle("-fx-text-fill:#cdd6f4; -fx-font-size:12px;");
+                titleLbl.setStyle("-fx-text-fill:#1f2328; -fx-font-size:12px;");
                 String preview = lines.length > 2
                         ? lines[1] + "\n" + lines[2].substring(0, Math.min(lines[2].length(), 60)) + "…"
                         : lines[1];
                 if (preview.length() > 80) preview = preview.substring(0, 80) + "…";
                 Label previewLbl = new Label(preview);
-                previewLbl.setStyle("-fx-text-fill:#6c7086; -fx-font-size:10px;");
+                previewLbl.setStyle("-fx-text-fill:#848d97; -fx-font-size:10px;");
                 setGraphic(new VBox(2, titleLbl, previewLbl));
                 setText(null);
                 setTooltip(new Tooltip(item.length() > 500 ? item.substring(0, 500) + "…" : item));

@@ -73,7 +73,7 @@ public class MainWindow {
         clockLabel.setId("clock-label");
         javafx.scene.control.Label throughputLabel = new javafx.scene.control.Label();
         throughputLabel.setId("status-label");
-        throughputLabel.setStyle("-fx-text-fill:#6c7086; -fx-font-size:10px; -fx-font-family:'SF Mono',Menlo,monospace;");
+        throughputLabel.setStyle("-fx-text-fill:#848d97; -fx-font-size:10px; -fx-font-family:'SF Mono',Menlo,monospace;");
         throughputLabel.setVisible(false);
 
         // Sample byte counters for throughput calculation

@@ -75,7 +75,7 @@ public class KeybindingsDialog extends Dialog<Void> {
             });
 
             Button resetBtn = new Button("↺");
-            resetBtn.setStyle("-fx-background-color:transparent; -fx-text-fill:#6c7086; -fx-cursor:hand; -fx-padding:2 6 2 6;");
+            resetBtn.setStyle("-fx-background-color:transparent; -fx-text-fill:#848d97; -fx-cursor:hand; -fx-padding:2 6 2 6;");
             resetBtn.setTooltip(new Tooltip("Reset to default: " + KeybindingStore.DEFAULTS.get(actionId)));
             resetBtn.setOnAction(e -> tf.setText(KeybindingStore.DEFAULTS.getOrDefault(actionId, "")));
 
@@ -91,11 +91,11 @@ public class KeybindingsDialog extends Dialog<Void> {
                 entry.getValue().setText(KeybindingStore.DEFAULTS.getOrDefault(entry.getKey(), ""));
             }
         });
-        resetAllBtn.setStyle("-fx-background-color:#313244; -fx-text-fill:#f38ba8; -fx-cursor:hand;");
+        resetAllBtn.setStyle("-fx-background-color:#d0d7de; -fx-text-fill:#cf222e; -fx-cursor:hand;");
 
         ScrollPane scroll = new ScrollPane(grid);
         scroll.setFitToWidth(true);
-        scroll.setStyle("-fx-background-color:transparent; -fx-background:#1e1e2e;");
+        scroll.setStyle("-fx-background-color:transparent; -fx-background:#f6f8fa;");
 
         VBox content = new VBox(8, scroll, resetAllBtn);
         content.setPadding(new Insets(8));

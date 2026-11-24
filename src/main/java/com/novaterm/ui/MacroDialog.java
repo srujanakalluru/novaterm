@@ -62,7 +62,7 @@ public class MacroDialog extends Dialog<Void> {
         toolbar.setPadding(new Insets(8, 0, 0, 0));
 
         Label hint = new Label("Double-click or press ▶ to replay a macro in the active terminal.");
-        hint.setStyle("-fx-text-fill:#6c7086; -fx-font-size:11px;");
+        hint.setStyle("-fx-text-fill:#848d97; -fx-font-size:11px;");
 
         VBox content = new VBox(8, list, toolbar, hint);
         content.setPadding(new Insets(12));

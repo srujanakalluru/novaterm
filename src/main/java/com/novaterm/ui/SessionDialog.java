@@ -73,7 +73,7 @@ public class SessionDialog extends Dialog<Session> {
         colorPicker.getStyleClass().add("button");
         Label colorLabel = new Label("Tab color:");
         Label colorHint = new Label("(transparent = no dot)");
-        colorHint.setStyle("-fx-text-fill:#6c7086; -fx-font-size:10px;");
+        colorHint.setStyle("-fx-text-fill:#848d97; -fx-font-size:10px;");
         HBox colorRow = new HBox(6, colorPicker, colorHint);
         colorRow.setAlignment(javafx.geometry.Pos.CENTER_LEFT);
 

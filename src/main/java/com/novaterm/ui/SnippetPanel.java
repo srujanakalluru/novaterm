@@ -44,10 +44,10 @@ public class SnippetPanel {
                 super.updateItem(item, empty);
                 if (empty || item == null) { setGraphic(null); setText(null); return; }
                 Label lbl = new Label(item.label());
-                lbl.setStyle("-fx-text-fill:#cdd6f4; -fx-font-size:12px;");
+                lbl.setStyle("-fx-text-fill:#1f2328; -fx-font-size:12px;");
                 Label cmd = new Label(item.command().length() > 60
                         ? item.command().substring(0, 59) + "…" : item.command());
-                cmd.setStyle("-fx-text-fill:#6c7086; -fx-font-size:10px; -fx-font-family:'SF Mono',Menlo,monospace;");
+                cmd.setStyle("-fx-text-fill:#848d97; -fx-font-size:10px; -fx-font-family:'SF Mono',Menlo,monospace;");
                 VBox box = new VBox(2, lbl, cmd);
                 setGraphic(box); setText(null);
             }
@@ -72,7 +72,7 @@ public class SnippetPanel {
                 MenuItem edit = new MenuItem("✏ Edit…");
                 edit.setOnAction(ev -> editSnippet(sel));
                 MenuItem delete = new MenuItem("🗑 Delete");
-                delete.setStyle("-fx-text-fill:#f38ba8;");
+                delete.setStyle("-fx-text-fill:#cf222e;");
                 delete.setOnAction(ev -> { snippets.remove(sel); save(); refresh(filter.getText()); });
                 ctx.getItems().addAll(send, edit, new SeparatorMenuItem(), delete);
             }
