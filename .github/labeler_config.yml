@@ -1,0 +1,19 @@
+version: "1"
+
+# Backend - Java packages
+app: src/**/java/com/novaterm/*.java
+session: src/**/java/com/novaterm/session/**/*.java
+ssh: src/**/java/com/novaterm/ssh/**/*.java
+terminal: src/**/java/com/novaterm/terminal/**/*.java
+ui: src/**/java/com/novaterm/ui/**/*.java
+plugin: src/**/java/com/novaterm/plugin/**/*.java
+resources: src/**/resources/**/*.*
+
+# Build
+gradle: build.gradle, build.gradle.kts, settings.gradle, settings.gradle.kts
+
+# Operations
+workflow: .github/**/*.*
+
+# Documentation
+readme: README.md
