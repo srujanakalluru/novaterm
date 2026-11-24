@@ -30,17 +30,30 @@ public class ColorScheme {
         SCHEMES.put("Ayu Dark",           new String[]{"#0a0e14", "#b3b1ad", "#e6b450"});
         SCHEMES.put("Palenight",          new String[]{"#292d3e", "#a6accd", "#82aaff"});
         // ── Light themes ─────────────────────────────────────────────────────
+        SCHEMES.put("Github Light",       new String[]{"#ffffff", "#24292f", "#0969da"});
         SCHEMES.put("Catppuccin Latte",   new String[]{"#eff1f5", "#4c4f69", "#dc8a78"});
+        SCHEMES.put("One Light",          new String[]{"#fafafa", "#383a42", "#4078f2"});
         SCHEMES.put("Solarized Light",    new String[]{"#fdf6e3", "#657b83", "#268bd2"});
         SCHEMES.put("Gruvbox Light",      new String[]{"#fbf1c7", "#3c3836", "#af3a03"});
         SCHEMES.put("Rose Pine Dawn",     new String[]{"#faf4ed", "#575279", "#907aa9"});
         SCHEMES.put("Ayu Light",          new String[]{"#fafafa", "#575f66", "#ff9940"});
-        SCHEMES.put("Github Light",       new String[]{"#ffffff", "#24292f", "#0969da"});
+        SCHEMES.put("Everforest Light",   new String[]{"#f2efdf", "#5c6a72", "#8da101"});
+        SCHEMES.put("Flexoki Light",      new String[]{"#fffcf0", "#100f0f", "#d14d41"});
+        SCHEMES.put("Material Light",     new String[]{"#fafafa", "#546e7a", "#00bcd4"});
+        SCHEMES.put("Papercolor Light",   new String[]{"#eeeeee", "#444444", "#0087af"});
+        SCHEMES.put("Tomorrow",           new String[]{"#ffffff", "#4d4d4c", "#4271ae"});
+        SCHEMES.put("Alabaster",          new String[]{"#f7f7f7", "#433b35", "#aa3731"});
+        SCHEMES.put("Parchment",          new String[]{"#f8f0d9", "#403428", "#c8a060"});
+        SCHEMES.put("Quiet Light",        new String[]{"#f5f5f5", "#333333", "#007acc"});
+        SCHEMES.put("Pencil Light",       new String[]{"#f1f1f1", "#212121", "#0088cc"});
+        SCHEMES.put("Modus Operandi",     new String[]{"#ffffff", "#000000", "#0030a6"});
+        SCHEMES.put("IntelliJ Light",     new String[]{"#ffffff", "#000000", "#2f6fba"});
+        SCHEMES.put("Atelier Sulphurpool",new String[]{"#f5f7ff", "#5e6687", "#6679cc"});
     }
 
     public static String[] resolve(String name) {
         return SCHEMES.getOrDefault(name,
-                SCHEMES.get("Catppuccin Mocha"));
+                SCHEMES.get("Github Light"));
     }
 
     public static java.util.List<String> names() {

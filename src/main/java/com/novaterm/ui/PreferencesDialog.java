@@ -49,7 +49,7 @@ public class PreferencesDialog extends Dialog<Void> {
 
         ComboBox<String> schemeCombo = new ComboBox<>();
         schemeCombo.getItems().addAll(ColorScheme.names());
-        schemeCombo.setValue(PREFS.get(PREF_COLOR_SCHEME, "Catppuccin Mocha"));
+        schemeCombo.setValue(PREFS.get(PREF_COLOR_SCHEME, "Github Light"));
 
         // Color swatch showing bg + fg of selected scheme
         Rectangle bgSwatch = new Rectangle(18, 14);
