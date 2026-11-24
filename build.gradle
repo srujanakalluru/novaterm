@@ -40,9 +40,7 @@ application {
     mainClass = 'com.novaterm.Main'
     applicationDefaultJvmArgs = [
         '--add-opens=java.base/java.lang=ALL-UNNAMED',
-        '--add-opens=java.desktop/java.awt.font=ALL-UNNAMED',
-        '--add-exports=javafx.graphics/com.sun.javafx.sg.prism=ALL-UNNAMED',
-        '--add-exports=javafx.web/com.sun.javafx.webkit=ALL-UNNAMED'
+        '--add-opens=java.desktop/java.awt.font=ALL-UNNAMED'
     ]
 }
 
@@ -63,6 +61,9 @@ tasks.register('fatJar', Jar) {
             it.isDirectory() ? it : zipTree(it)
         }
     }
+    exclude 'META-INF/*.SF'
+    exclude 'META-INF/*.DSA'
+    exclude 'META-INF/*.RSA'
     with jar
 }
 
